@@ -1,0 +1,15 @@
+# Configurable variables.
+image=786346568665.dkr.ecr.us-east-1.amazonaws.com/oc_ds/ocsage-base:nlp-tasks
+metaflow_user=yash
+
+# Run the container.
+docker run  \
+    -e USER=${metaflow_user} \
+    -e AWS_DEFAULT_REGION=us-east-1 \
+    --gpus all \
+    --net=host \
+    --ipc=host \
+    -it  \
+    --rm  \
+    -v /home/ubuntu/ml:/workspaces/ml \
+    ${image}
